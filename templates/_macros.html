@@ -1,0 +1,35 @@
+{% macro campo1(name, placeholder, type='text') %}
+
+<div class="mb-1">
+    <label for="{{name}}" class="form-label">N 1:</label>
+    <input type="{{type}}" class="form-control" id="{{name}}" name="{{name}}" placeholder="{{placeholder}}">
+</div>
+
+{% endmacro %}
+
+{% macro campo2(field) %}
+  <dt>{{ field.label }}
+  <dd>{{ field(**kwargs)|safe }}
+  {% if field.errors %}
+    <ul class=errors>
+    {% for error in field.errors %}
+      <li style="color: red;">{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </dd>
+{% endmacro %}
+
+{% macro campo3(textarea) %}
+
+    <label for="{{textarea.id}}" class="form-label">{{textarea.label.text}}</label>
+    {{ textarea(class="form-control") }}
+    {% if textarea.errors %}
+      <ul class=errors>
+      {% for error in textarea.errors %}
+        <li style="color: red;">{{ error }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+
+{% endmacro %}

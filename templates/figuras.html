@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% import "_macros.html" as macro %}
+<form action="" method="post" class="form-control" novalidate>
+    <h1>Calculadora de Áreas</h1>
+    
+    {{ macro.campo2(form.figura) }}
+    {{ macro.campo2(form.valor1) }}
+    {{ macro.campo2(form.valor2) }}
+    <button type="submit" class="btn btn-primary">Calcular</button>
+</form>
+
+{% if area %}
+    <h2>Área del {{ 
+        'triángulo' if figura == 'triangulo' 
+        else 'rectángulo' if figura == 'rectangulo' 
+        else 'círculo' if figura == 'circulo' 
+        else 'pentágono' 
+    }}: {{ "%.2f"|format(area) }}</h2>
+{% endif %}
+
+{% endblock %}
